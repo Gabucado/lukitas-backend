@@ -1,10 +1,10 @@
-from src.app.common.IService import IService
-from src.app.Modules.Account.domain.repository import AccountRepository
+from app.common.IContainer import IContainer
+from app.common.IService import IService
 
 
-class UpdateAccountService(IService):
-    def __init__(self, repo:AccountRepository):
-        self.repo = repo
+class GetAccountService(IService):
+    def __init__(self, container: IContainer):
+        self.repo = container.get_model("Account")
 
-    def run(self, id:str):
+    def run(self, id: str):
         return self.repo.get(id)

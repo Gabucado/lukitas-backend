@@ -1,18 +1,13 @@
+from decimal import Decimal
 
-from src.app.Modules.Account.domain.dto import AccountDTO
-from src.app.Modules.Account.domain.interfaces import IAccount
+from app.Modules.Account.domain.interfaces import IAccount
 
 
 class Account(IAccount):
-
-    def __init__(self, dto: AccountDTO):
-        self.load(dto)
-        self.dto = dto
-
-    def load(self, dto: AccountDTO):
-        self.id = dto.id
-        self.amount = dto.amount
-        self.name = dto.name
+    def __init__(self, id: str, amount: Decimal, name: str):
+        self.id = id
+        self.amount = amount
+        self.name = name
 
     def get_amount(self):
         return self.amount

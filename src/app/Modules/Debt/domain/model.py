@@ -1,20 +1,15 @@
-from src.app.Modules.Debt.domain.dto import DebtDTO
-from src.app.Modules.Debt.domain.interfaces import IDebt
+from app.Modules.Debt.domain.interfaces import IDebt
 
 
 class Debt(IDebt):
-    def __init__(self, dto: DebtDTO) -> None:
-        self.dto = dto
-        self.load(dto)
-
-    def load(self, dto):
-        self.id = dto.id
-        self.name = dto.name
-        self.currency = dto.currency
-        self.date = dto.date
-        self.amount = dto.amount
-        self.debtor = dto.debtor
-        self.creditor = dto.creditor
+    def __init__(self, id, name, currency, date, amount, debtor, creditor):
+        self.id = id
+        self.name = name
+        self.currency = currency
+        self.date = date
+        self.amount = amount
+        self.debtor = debtor
+        self.creditor = creditor
 
     def get_id(self):
         return self.id

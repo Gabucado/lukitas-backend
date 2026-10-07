@@ -1,20 +1,18 @@
-from src.app.Modules.Transaction.domain.dto import TransactionDTO
+from app.Modules.Transaction.domain.interfaces import ITransaction
 
 
-class Transaction:
-    def __init__(self, dto: TransactionDTO):
-        self.dto = dto
-        self.load(dto)
-
-    def load(self, dto:TransactionDTO):
-        self.id = dto.id
-        self.name = dto.name
-        self.paymentMethod = dto.paymentMethod
-        self.amount = dto.amount
-        self.currency = dto.currency
-        self.origin = dto.origin
-        self.destiny = dto.destiny
-        self.category = dto.category
+class Transaction(ITransaction):
+    def __init__(
+        self, id, name, paymentMethod, amount, currency, origin, destiny, category
+    ):
+        self.id = id
+        self.name = name
+        self.paymentMethod = paymentMethod
+        self.amount = amount
+        self.currency = currency
+        self.origin = origin
+        self.destiny = destiny
+        self.category = category
 
     def get_id(self):
         return self.id

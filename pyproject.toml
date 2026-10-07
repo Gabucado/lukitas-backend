@@ -7,7 +7,9 @@ authors = [
     { name = "Gabucado", email = "awsalinas@uc.cl" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "psycopg2-binary>=2.9.13",
+]
 
 [project.scripts]
 app = "app:main"
@@ -15,3 +17,8 @@ app = "app:main"
 [build-system]
 requires = ["uv_build>=0.12.8,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "black>=26.10.0",
+]

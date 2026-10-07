@@ -1,18 +1,18 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
-from src.app.Modules.Account.domain.model import Account
+from app.common.IRepository import IRepository
+from app.Modules.Account.domain.model import Account
 
 
-class AccountRepository(ABC):
+class AccountRepository(IRepository[Account]):
     @abstractmethod
-    def save(self, account: Account) -> bool:
-        ...
+    def save(self, obj: Account): ...
 
-    def get(self, id:str) -> Account:
-        ...
+    @abstractmethod
+    def get(self, id: str) -> Account: ...
 
-    def delete(self, account: Account) -> bool:
-        ...
+    @abstractmethod
+    def delete(self, obj: Account): ...
 
-    def update(self, account:Account) -> Account:
-        ...
+    @abstractmethod
+    def update(self, obj: Account): ...
