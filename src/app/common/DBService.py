@@ -7,9 +7,8 @@ from app.common.Singleton import SingletonMeta
 
 class DBService(metaclass=SingletonMeta):
     def __init__(self) -> None:
-        self.__conn = psycopg2.connect(os.environ.get('DB_URL', 'wah'))
+        self.__conn = psycopg2.connect(os.environ.get("DB_URL", "wah"))
         self.__cursor = self.__conn.cursor()
-
 
     def execute(self, query: str):
         self.__cursor.execute(query)
