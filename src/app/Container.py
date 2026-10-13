@@ -1,3 +1,5 @@
+from fastapi import FastAPI
+
 from app.common.DBService import DBService
 from app.common.IContainer import IContainer
 from app.common.IFactory import Factory
@@ -39,6 +41,8 @@ class Container(IContainer):
 
     def __initialize_adapters(self):
         self.adapters["DBService"] = DBService()
+        # TODO: Encapsular FastApi
+        self.adapters["Api"] = FastAPI()
         self.repositories["Account"] = PostgresAccountRepository(DBService())
 
     def __initialize_services(self):

@@ -1,7 +1,6 @@
-from app.Main import Main
+from app.main import Main
 
 
 def main() -> None:
     # print(os.environ.get('DB_URL'))
-    print("Hello from app!")
     Main()

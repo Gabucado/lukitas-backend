@@ -4,7 +4,7 @@ from app.common.IService import IService
 
 class GetAccountService(IService):
     def __init__(self, container: IContainer):
-        self.repo = container.get_model("Account")
+        self.repo = container.get_repo("Account")
 
     def run(self, id: str):
         return self.repo.get(id)
