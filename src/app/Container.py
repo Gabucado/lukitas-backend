@@ -46,6 +46,10 @@ from app.Modules.Transaction.infrastructure.repository.postgres.PostgresTransact
 from app.Modules.Account.infrastructure.api.FastAPI.FastAPIAccountAdapter import (
     FastAPIAccountAdapter,
 )
+from app.Modules.MigrationRunner.infrastructure.Runner.PostgresRunner import (
+    PostgresMigrationRunner,
+)
+
 
 class Container(IContainer):
 
@@ -65,6 +69,7 @@ class Container(IContainer):
         self.models["Transaction"] = Factory(Transaction)
         self.models["Debt"] = Factory(Debt)
         self.models["Category"] = Factory(Category)
+        self.models["Migration"] = PostgresMigrationRunner(DBService())
 
     def __initialize_repositories(self):
         self.repositories["Account"] = PostgresAccountRepository(DBService())
@@ -75,7 +80,7 @@ class Container(IContainer):
     def __initialize_adapters(self):
         self.adapters["DBService"] = DBService()
         self.adapters["Api"] = FastAPIAdapter()
-        
+
         register(
             self.adapters["Api"],
             FastAPIAccountAdapter(
@@ -83,7 +88,7 @@ class Container(IContainer):
                 self.get_service("DeleteAccount"),
                 self.get_service("GetAccount"),
                 self.get_service("UpdateAccount"),
-            )
+            ),
         )
 
     def __initialize_services(self):

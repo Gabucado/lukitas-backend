@@ -1,0 +1,1 @@
+create table migrations (bigint id unique primary key, varchar(32) model not null, timestamp run_at);
