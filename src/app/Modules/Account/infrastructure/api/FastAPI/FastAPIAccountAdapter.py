@@ -4,7 +4,6 @@ from app.Modules.Account.app.Create import CreateAccountService
 from app.Modules.Account.app.Delete import DeleteAccountService
 from app.Modules.Account.app.Get import GetAccountService
 from app.Modules.Account.app.Update import UpdateAccountService
-from app.Modules.Account.domain.dto import AccountDTO
 
 
 class FastAPIAccountAdapter:
@@ -24,7 +23,7 @@ class FastAPIAccountAdapter:
         self.update_account_service = update_account_service
 
     @post()
-    def create(self, body: AccountDTO):
+    def create(self, body: dict):
         self.create_account_service.run(body)
 
     @get("/{account_id}")
@@ -32,7 +31,7 @@ class FastAPIAccountAdapter:
         self.get_account_service.run(account_id)
 
     @patch("/{account_id}")
-    def update(self, body: AccountDTO):
+    def update(self, body: dict):
         self.update_account_service.run(body)
 
     @delete("/{account_id}")

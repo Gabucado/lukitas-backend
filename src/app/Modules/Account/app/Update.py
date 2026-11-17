@@ -9,7 +9,7 @@ class UpdateAccountService(IService):
         self.repo = container.get_repo("Account")
         self.factory = container.get_model("Account")
 
-    def run(self, object: dict):
-        dto = AccountDTO(object)
+    def run(self, obj: dict):
+        dto = AccountDTO(obj)
         account: Account = self.factory.build(dto)
         self.repo.update(account)

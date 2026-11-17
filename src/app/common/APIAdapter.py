@@ -13,7 +13,6 @@ class FastAPIAdapter(IAPIPort):
             route.path, route.handler, methods=[route.method], **route.options
         )
 
-
-def register(api: IAPIPort, controller: object) -> None:
+def register(api: IAPIPort, controller: Route) -> None:
     for r in collect_routes(controller):
         api.add_route(r)
